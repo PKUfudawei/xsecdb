@@ -39,8 +39,8 @@ def insert_xsdb_records(json_dir='./json'):
             print("json corrupted, skipping")
         else:
             print("json OK, uploading")
-            insert_xsdb_with_file(json_file=json_file)
+            insert_xsdb_with_file(json_file)
 
 
 if __name__ == "__main__":
-    insert_xsdb_records(json_dir='./json')
+    insert_xsdb_records(json_dir='./json', log_dir='./insert_xsdb_logs')
