@@ -4,7 +4,7 @@
 from optparse import OptionParser
 import os
 import sys
-import commands
+import subprocess
 import re
 import datetime
 from time import sleep
@@ -30,28 +30,28 @@ if __name__ == "__main__":
     debug = str_to_bool(str(args.debug))
     mcm = str_to_bool(str(args.mcm))
     skipexisting = str_to_bool(str(args.skipexisting))
-    if debug: print 'args.mcm',args.mcm,'mcm',mcm,'debug',debug
-    if debug: print 'debug is True!'
-    if debug and mcm: print 'mcm is True!'
+    if debug: print('args.mcm', args.mcm, 'mcm', mcm, 'debug', debug)
+    if debug: print('debug is True!')
+    if debug and mcm: print('mcm is True!')
     
     if debug:
-        print
-        print 'RUNNING PARAMS: '
-        print '                debug                 = ' + str(debug)
-        print '                dataset               = ' + args.inputdataset
-        print '                MC campaign           = ' + args.campaign
-        print '                Datatier              = ' + args.datatier
-        print '                number of events      = ' + str(args.events)
-        print '                use McM prepID        = ' + str(mcm)
-        print '                skipexisting          = ' + str(skipexisting)
-        print
+        print()
+        print('RUNNING PARAMS: ')
+        print('                debug                 = ' + str(debug))
+        print('                dataset               = ' + args.inputdataset)
+        print('                MC campaign           = ' + args.campaign)
+        print('                Datatier              = ' + args.datatier)
+        print('                number of events      = ' + str(args.events))
+        print('                use McM prepID        = ' + str(mcm))
+        print('                skipexisting          = ' + str(skipexisting))
+        print()
 
     das_cmd = "/cvmfs/cms.cern.ch/common/dasgoclient"
 
     # if mcm is specified, retrieve dataset name from prepID:
     if mcm:
         if "/" in str(args.inputdataset): 
-            print "not a McM prepID format, please check"
+            print("not a McM prepID format, please check")
             sys.exit(1)
         # load McM
         sys.path.append('/afs/cern.ch/cms/PPD/PdmV/tools/McM/')
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         sys.stdout = f
         request = mcm.get('requests', str(args.inputdataset))
         sys.stdout = temp
-        if debug: print 'request prepid',request['prepid']
+        if debug: print('request prepid',request['prepid'])
         # search dataset name as returned by mcm
         dataset_used = str(request['output_dataset'][0])
         primary_dataset_name = dataset_used.split('/')[1]
@@ -71,25 +71,25 @@ if __name__ == "__main__":
         # search dataset name as name + campaign + datatier
         primary_dataset_name = args.inputdataset.split('/')[1]
         command=das_cmd+" --limit=0 --query=\"dataset dataset=/"+primary_dataset_name+"/*"+args.campaign+"*/"+args.datatier+"\""
-        dataset_used = commands.getstatusoutput(command)[1].split("\n")
-        if debug: print 'command',command,'\n'
+        dataset_used = subprocess.getstatusoutput(command)[1].split("\n")
+        if debug: print('command', command, '\n')
         dataset_used = [x.strip() for x in dataset_used][0]
     
     if skipexisting and os.path.isfile("xsec_"+primary_dataset_name+".log"): 
-        print "xsec_"+primary_dataset_name+".log existing and NO skipexisting asked, skipping"
+        print("xsec_"+primary_dataset_name+".log existing and NO skipexisting asked, skipping")
         # sys.exit(0)
     else:
-        if debug: print 'dataset_used',dataset_used
-        if debug: print 'primary_dataset_name',primary_dataset_name,'\n'
+        if debug: print('dataset_used', dataset_used)
+        if debug: print('primary_dataset_name', primary_dataset_name, '\n')
         # pick up only the first dataset of the list
-        if debug: print 'dataset_used',dataset_used
+        if debug: print('dataset_used', dataset_used)
         # retrieve filelist
         command=das_cmd+" --limit=100 --query=\"file dataset="+dataset_used+"\" "
-        if debug: print 'command',command
-        filelist_used = "/store"+commands.getstatusoutput(command)[1].replace("\n",",").split("/store",1)[1] 
+        if debug: print('command', command)
+        filelist_used = "/store"+subprocess.getstatusoutput(command)[1].replace("\n",",").split("/store",1)[1] 
         if debug: 
-            print 'filelist_used',filelist_used.split(',')[0]
+            print('filelist_used', filelist_used.split(',')[0])
             filelist_used = filelist_used.split(',')[0]
         # compute cross section
         command = 'cmsRun genXsec_cfg.py inputFiles=\"'+filelist_used+'\" maxEvents='+str(args.events)+" 2>&1 | tee xsec_"+primary_dataset_name+".log"
-        print command
+        print(command)

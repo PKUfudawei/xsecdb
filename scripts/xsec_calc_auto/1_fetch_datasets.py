@@ -2,19 +2,14 @@
 import os, pycurl, json, os, io, yaml
 
 
-CAMPAIGN = "RunIII"
+CAMPAIGN = "RunIISummer20UL"
 DATATIER = "MINIAODSIM"
 DATASET = f"/*/*{CAMPAIGN}*/{DATATIER}"
 
 
 def fecth_datasets(outfile='./datasets.txt'):
-    with open('user_config.yaml', 'r') as f:
-        user_config = yaml.safe_load(f)
-    password = user_config['password']
-    
     # fetch datasets and store them in a file
-    os.system(f"echo {password} | voms-proxy-init -voms cms -valid 192:0")
-    os
+    os.system(f"voms-proxy-init -voms cms -valid 192:0")
     os.system(f"/cvmfs/cms.cern.ch/common/dasgoclient --query=\"dataset dataset={DATASET}\" --limit=-1 |grep \"^/\"> {outfile}")
 
 
@@ -92,7 +87,7 @@ def generate_fetch_files(infile='./datasets.txt', outdir='./fetch_files/'):
             print(f"File found: {file_path}")
         else:
             print(f"Creating file: {file_path}")
-            generate_command = f"python2 ./compute_cross_section.py -f {line} -c {CAMPAIGN} -n 100000 -d {DATATIER} --skipexisting \"True\""
+            generate_command = f"python3 ./compute_cross_section.py -f {line} -c {CAMPAIGN} -n 1000000 -d {DATATIER} --skipexisting \"True\""
             os.system(f"echo \"{generate_command}\" > {file_path}")
 
 

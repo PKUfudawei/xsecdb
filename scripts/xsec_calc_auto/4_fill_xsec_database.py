@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import pycurl, os, json
+import pycurl, os, json, io
 
 
 def insert_xsdb_with_file(json_file):
