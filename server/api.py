@@ -219,7 +219,7 @@ def search():
 @app.route('/api/fields', methods=['GET'])
 def get_fields():
     """ get list of record_structure field names (for selecting visible columns) """
-    result = sorted(record_structure.keys(), key=get_field_order)
+    result = sorted([record_structure[k]['title'] for k in record_structure], key=get_field_order)
     return make_response(jsonify(result), 200)
 
 
