@@ -67,7 +67,7 @@ def get_by_id(record_id):
                 # if field does not exit in record structure default is:
                 # enabled, not required text field
                 result_dic[key] = {
-                    'title': key,
+                    'title': record['title'],
                     'type': 'text',
                     'value': value
                 }
