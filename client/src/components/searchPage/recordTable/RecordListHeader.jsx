@@ -12,7 +12,7 @@ const styles = {
         width: '20%',
         textAlign: 'right'
     },
-    th: { borderRight: '1px solid #e8e8e8', minWidth: '215px' },
+    th: { borderRight: '1px solid #e8e8e8', whiteSpace: 'nowrap'},
     orderInactive: { color: '#bdb8b8' }
 }
 

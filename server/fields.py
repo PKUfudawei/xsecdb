@@ -30,7 +30,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 9,
+        'order': 6,
         'no_whitespace': True
     },
     "MCM": {
@@ -57,7 +57,7 @@ fields = {
         'value': "unknown",
         'disabled': False,
         'required': True,
-        'order': 7
+        'order': 5
     },
     "contact": {
         'title': "contact",
@@ -65,7 +65,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 8
+        'order': 25
     },
     "comments": {
         'title': "comments",
@@ -81,7 +81,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 14
+        'order': 26
     },
     "cross_section": {
         'title': "cross_section / pb",
@@ -89,7 +89,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 4
+        'order': 2
     },
     "equivalent_lumi": {
         'title': "equivalent_lumi",
@@ -114,7 +114,7 @@ fields = {
         'value': False,
         'disabled': False,
         'required': False,
-        'order': 3
+        'order': 7
     },
     "fraction_negative_weight": {
         'title': "fraction_negative_weight",
@@ -147,7 +147,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 6
+        'order': 4
     },
     "process_name": {
         'title': "process_name",
@@ -181,7 +181,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 5
+        'order': 3
     },
     "createdOn": {
         'title': "createdOn",
@@ -207,7 +207,7 @@ fields = {
         'value': "",
         'disabled': True,
         'required': False,
-        'order': 25,
+        'order': 8,
         'read_only': True
     },
     "modifiedBy": {
@@ -235,7 +235,7 @@ fields = {
         'value': "new",
         'disabled': True,
         'required': False,
-        'order': 2,
+        'order': 9,
         'read_only': True
     },
     "discussion": {
