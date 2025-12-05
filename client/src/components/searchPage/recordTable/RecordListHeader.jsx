@@ -22,7 +22,11 @@ const RecordListHeader = (props) => {
     const header = props.columns.filter(col => col.isVisible == true)
         .map((col, i) =>
             (<th key={i} style={styles.th} onClick={props.onColumnHeaderClick(col.name)} role="button">
-                <div style={styles.left}>{col.title}</div>
+            <div style={styles.left}>
+                {col.name}
+                {['cross_section', 'total_uncertainty', 'other_uncertainty'].includes(col.name) ? ' / pb' : ''}
+                {col.name === 'energy' ? ' / TeV' : ''}
+                </div>
                 <div style={styles.right}>
                     <span className="glyphicon glyphicon-triangle-top" aria-hidden="true"
                         style={col.name === ordFieldName && ordDirection === -1 ? {} : styles.orderInactive} />
