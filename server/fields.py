@@ -106,7 +106,7 @@ fields = {
         'value': "6",
         'disabled': False,
         'required': True,
-        'order': 17
+        'order': 7
     },
     "isValid": {
         'title': "isValid",
@@ -114,7 +114,7 @@ fields = {
         'value': False,
         'disabled': False,
         'required': False,
-        'order': 7
+        'order': 17
     },
     "fraction_negative_weight": {
         'title': "fraction_negative_weight",
