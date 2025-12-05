@@ -81,7 +81,6 @@ def get_ordered_field_list(record_dict):
     for tupl in result_:
         dic = tupl[1]
         dic['name'] = tupl[0]
-        dic['title'] = record_structure[tupl[0]].get('title', tupl[0])
         result.append(dic)
 
     return result
