@@ -56,9 +56,6 @@ def generate_condor_scripts(indir='./executable_script', condor_dir='./condor', 
     condor_dir = os.path.abspath(condor_dir)
     if not os.path.exists('./genXsec_cfg.py'):
         os.system("wget https://raw.githubusercontent.com/cms-sw/genproductions/refs/heads/master/Utilities/calculateXSectionAndFilterEfficiency/genXsec_cfg.py")
-    with open('user_config.yaml') as f:
-        user_config = yaml.safe_load(f)
-    proxy_path = user_config['proxy_path']
 
     for executable_script in os.listdir(indir):
         process_name = executable_script.split('.')[0]
