@@ -26,10 +26,8 @@ def parse_condor_output_to_json(infile = 'datasets.txt', condor_dir = './condor'
         if not os.path.exists(json_file):
             if 'final cross section' not in log: 
                 print("Cross section computation not correctly performed, skipping")
-                os.system("rm -rf dataset_noxsec.txt")
                 os.system(f"echo {process_name} >> dataset_noxsec.txt")
                 if 'Successfully opened file' not in log:
-                    os.system("rm -rf dataset_filenotfound.txt")
                     os.system(f"echo {process_name} >> dataset_filenotfound.txt")
                 continue
         else:

@@ -2,12 +2,7 @@
 # THIS SCRIPT REQUIRES CMSSW AND VOMS ENVIRONMENT
 import os, yaml
 
-# For RunIII
 cmssw = "CMSSW_15_0_2"
-# For Run3
-#cmssw = "CMSSW_13_0_16"
-# For RunII
-#cmssw = "CMSSW_10_6_0"
 
 def generate_executable_scripts(indir='./fetch_files', outdir='./executable_script'):
     os.system(f'rm -rf {outdir}')
@@ -114,8 +109,8 @@ def generate_condor_scripts(indir='./executable_script', condor_dir='./condor', 
                 contents = [
                     "universe = vanilla",
                     "+JobFlavour = testmatch",
-                    #"requirements = (OpSysAndVer =?= \"CentOS7\")",
-                    f"arguments = {proxy_path}",
+                    "use_x509userproxy = true",
+                    #f"arguments = {proxy_path}",
                     f"executable = {exec_script}",
                     "should_transfer_files = YES",
                     "when_to_transfer_output = ON_EXIT_OR_EVICT",
