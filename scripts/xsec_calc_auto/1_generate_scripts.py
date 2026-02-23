@@ -2,13 +2,19 @@
 import os, pycurl, json, io, yaml, subprocess
 from tqdm import tqdm
 
-CAMPAIGN = "RunIISummer20UL17"
+#CAMPAIGN = "RunIISummer20UL17"
 #CAMPAIGN = "Run3Summer23"
-#CAMPAIGN = "RunIII2024Summer24"
+CAMPAIGN = "RunIII2024Summer24"
 
 CMSSW_VERSION = "CMSSW_15_0_2"
 DATATIER = "MINIAODSIM"
 DAS_QUERY = f"/*/*{CAMPAIGN}*/{DATATIER}"
+
+
+def clean_up_cache(cache_files=['datasets.yaml', 'executable/', 'condor/', 'json/']):
+    for cache in cache_files:
+        os.system(f'rm -rf {cache}')
+
 
 def inquire_datasets_from_DAS(outname='datasets', query=DAS_QUERY):
     os.system(f"voms-proxy-init -voms cms -valid 192:0")
@@ -88,6 +94,7 @@ def generate_executable_scripts(datasets, maxEvents=1_000_000, outdir='./executa
 
 
 if __name__ == "__main__":
+    clean_up_cache()
     datasets = inquire_datasets_from_DAS()
 
     recorded_datasets, unrecorded_datasets= check_XSDB_records(datasets=datasets)
@@ -95,3 +102,4 @@ if __name__ == "__main__":
         yaml.dump({'unrecorded': unrecorded_datasets, 'recorded': recorded_datasets}, f)
 
     generate_executable_scripts(datasets=unrecorded_datasets)
+
