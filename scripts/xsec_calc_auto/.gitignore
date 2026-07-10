@@ -1,8 +1,7 @@
 genproductions/
-executable_script*/
+executable*/
 condor*/
 json*/
-fetch_files*/
 insert_xsdb_logs*/
-user_config.yaml
 *.txt
+*.yaml

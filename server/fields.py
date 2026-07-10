@@ -30,7 +30,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 9,
+        'order': 6,
         'no_whitespace': True
     },
     "MCM": {
@@ -57,7 +57,7 @@ fields = {
         'value': "unknown",
         'disabled': False,
         'required': True,
-        'order': 7
+        'order': 5
     },
     "contact": {
         'title': "contact",
@@ -65,7 +65,7 @@ fields = {
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 8
+        'order': 25
     },
     "comments": {
         'title': "comments",
@@ -81,15 +81,15 @@ fields = {
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 14
+        'order': 26
     },
     "cross_section": {
-        'title': "cross_section",
+        'title': "cross_section / pb",
         'type': "text",
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 4
+        'order': 2
     },
     "equivalent_lumi": {
         'title': "equivalent_lumi",
@@ -100,21 +100,21 @@ fields = {
         'order': 11
     },
     "energy": {
-        'title': "energy",
+        'title': "energy / TeV",
         'type': "select",
         'options': ["6", "7", "8", "13", "13.6", "14"],
         'value': "6",
         'disabled': False,
         'required': True,
-        'order': 17
+        'order': 7
     },
     "isValid": {
-        'title': "Is Valid",
+        'title': "isValid",
         'type': "checkbox",
         'value': False,
         'disabled': False,
         'required': False,
-        'order': 3
+        'order': 17
     },
     "fraction_negative_weight": {
         'title': "fraction_negative_weight",
@@ -125,7 +125,7 @@ fields = {
         'order': 12
     },
     "matrix_generator": {
-        'title': "Matrix generator",
+        'title': "matrix_generator",
         'type': "select",
         'options': ["none", "Sherpa", "Herwig++", "Herwig7", "Powheg", "Madgraph"],
         'value': "none",
@@ -142,15 +142,15 @@ fields = {
         'order': 14
     },
     "other_uncertainty": {
-        'title': "Other uncertainity",
+        'title': "other_uncertainty / pb",
         'type': "text",
         'value': "",
         'disabled': False,
         'required': False,
-        'order': 6
+        'order': 4
     },
     "process_name": {
-        'title': "Process name",
+        'title': "process_name",
         'type': "text",
         'value': "",
         'disabled': False,
@@ -159,7 +159,7 @@ fields = {
         'no_whitespace': True
     },
     "reweighting": {
-        'title': "Reweighting",
+        'title': "reweighting",
         'type': "text",
         'value': "",
         'disabled': False,
@@ -167,7 +167,7 @@ fields = {
         'order': 13
     },
     "shower": {
-        'title': "Shower",
+        'title': "shower",
         'type': "select",
         'options': ["none", "Pythia8", "Sherpa", "Herwig++", "Herwig7", "Powheg", "Madgraph"],
         'value': "none",
@@ -176,15 +176,15 @@ fields = {
         'order': 15
     },
     "total_uncertainty": {
-        'title': "Total uncertainty",
+        'title': "total_uncertainty",
         'type': "text",
         'value': "",
         'disabled': False,
         'required': True,
-        'order': 5
+        'order': 3
     },
     "createdOn": {
-        'title': "Created on",
+        'title': "createdOn",
         'type': "date",
         'value': "",
         'disabled': True,
@@ -193,7 +193,7 @@ fields = {
         'read_only': True
     },
     "modifiedOn": {
-        'title': "Modified on",
+        'title': "modifiedOn",
         'type': "date",
         'value': "",
         'disabled': True,
@@ -202,16 +202,16 @@ fields = {
         'read_only': True
     },
     "createdBy": {
-        'title': "Created by",
+        'title': "createdBy",
         'type': "text",
         'value': "",
         'disabled': True,
         'required': False,
-        'order': 25,
+        'order': 8,
         'read_only': True
     },
     "modifiedBy": {
-        'title': "Modified by",
+        'title': "modifiedBy",
         'type': "text",
         'value': "",
         'disabled': True,
@@ -220,7 +220,7 @@ fields = {
         'read_only': True
     },
     "approvedBy": {
-        'title': "Approved by",
+        'title': "approvedBy",
         'type': "text",
         'value': "",
         'disabled': True,
@@ -235,7 +235,7 @@ fields = {
         'value': "new",
         'disabled': True,
         'required': False,
-        'order': 2,
+        'order': 9,
         'read_only': True
     },
     "discussion": {

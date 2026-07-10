@@ -15,7 +15,7 @@ class RequestWrapper:
     c.setopt(c.COOKIEJAR, os.path.expanduser("~/private/xsdbdev-cookie.txt"))
     c.setopt(c.COOKIEFILE, os.path.expanduser("~/private/xsdbdev-cookie.txt"))
     c.setopt(c.HTTPHEADER, ['Content-Type:application/json', 'Accept:application/json'])
-    c.setopt(c.VERBOSE, False)
+    c.setopt(c.VERBOSE, True)
 
     def simple_search(self, keyval_dict):
         self._perform_post(os.path.join(self.api_url, 'search'), json.dumps(keyval_dict))
